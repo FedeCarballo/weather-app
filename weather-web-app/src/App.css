@@ -1,0 +1,67 @@
+.Buscador{
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+}
+.Buscador input{
+    width: 400px;
+    background-color: rgba(0, 0, 0, 0.266);
+    border-radius: 15px 0 0 15px;
+    font-size: 1.9vh;
+    color: #f8f8f8;
+    padding: .7rem 1.5rem;
+}
+::placeholder{
+    color: #f8f8f8;
+    padding: 5px;
+    font-size: 1.9vh;
+}
+.Buscador button img{
+    width: 40px;
+    height: 40px;
+}
+.Buscador button {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    transition: all 1s;
+}
+
+.Buscador button:hover {
+    background-color: rgba(0, 183, 255, 0.287);
+    border: none;
+}
+
+.container{
+    text-align: center;
+    background-color: hsla(0, 0%, 97%, 0.161);
+    border-radius: 20px;
+    width: 80%;
+    margin:30px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    content: '';
+}
+.container:before{
+    filter: blur(3px);
+}
+.descripcion img{
+    width: 70px;
+}
+.temperatura p{  
+    font-size: 70px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.bottom{
+    line-height: 3vh;
+    padding-bottom: 15px;
+    }
+.ST {
+    display: block;
+}
