@@ -2,6 +2,10 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import search from './assets/search.png'
 import './App.css'
+import video from './assets/video/wallpaper.mp4'
+import {BsThermometerSun,BsFillCloudsFill, BsWater} from 'react-icons/bs'
+import {GoLocation} from 'react-icons/go'
+import {AiFillEye} from 'react-icons/ai'
 function App() {
   const [data, setdata] = useState({})
   const [location,setlocation] = useState('');
@@ -13,7 +17,8 @@ function App() {
   const searchLocation = (e) => {
     axios.get(url).then((Response) => {
       setdata(Response.data)
-      console.log(Response.data);
+      console.log(Response.data.list[0]);
+      console.log(data.list[0].sys);
       }
     )  
   setlocation('')
@@ -21,60 +26,67 @@ function App() {
 
   return (
     <div className="App">
-
       <div className='Principal-container'>
+        <video className='video-bg' src={video} type='video/mp4' autoPlay muted loop></video>
+       {
+          data.list ? <div className='c2'>
+          
+            <div className='temperatura'>
+              {data.list ?
+              <div>
+                <h1>{data.list[0].main.temp}°C</h1>
+                <div className='temp_min_max'>
+                  <p>máx: {data.list[0].main.temp_max}°C</p>
+                  <p>mín: {data.list[0].main.temp_min}°C</p>
+                </div>
+              </div> : null }
+            </div> 
+        </div>: null 
+        }
 
-        <div className='Buscador'>
-          <input value={location} placeholder={'Buscar Ciudad'} onChange={((e) => {setlocation(e.target.value)})}/>
-          <button type='submit' value={'Buscar'} onClick={searchLocation}><img src={search} alt={data.name}/></button>
-        </div>
-        <div>
-
-        </div>
-        <div className='container'>
-          <div className='top'> 
-            <div className='ubicacion'> {
-              data.city ?
-              <h1>{data.city.name}. ta fresco. abrigate</h1> : null} 
-            </div>
-            <div className='descripcion'>
-              {
-                data.weather ? <div> <p>{data.weather[0].description}</p> <img src={`https://openweathermap.org/img/wn/${data.weather[0].icon+'.png'}`} alt={data.name} /> </div>  : null
-              }
-              {/* data.weather[0].icon+'.png' */}
-            </div>
+        {
+        data.city ?
+          <div className='c3'>
+            <h1>{data.city.name} <GoLocation /></h1> 
           </div>
-          {
-            data.main ? 
-            <div className='bottom'>
-              <div className='ST'>
-              <p> sensacion termica: {
-                  data.main ? <p>{data.main.feels_like}°C</p> : null
-                  } </p>
+          : null}
+         {data.list ?
+          <div className='c4'>
+              <div className='c4-container'>
+                <p>{data.list[0].weather[0].description}</p>
+                <img src={`https://openweathermap.org/img/wn/${data.list[0].weather[0].icon+'.png'}`} alt={data.name}/>
+                </div> 
+          </div> : null}
+          <div className='c5'>
+              <div className='Buscador'>
+                  <input value={location} placeholder={'Buscar Ciudad.'} onChange={((e) => {setlocation(e.target.value)})} onClick={searchLocation}/>
+                  <button type='submit' value={'Buscar'} onClick={searchLocation}><img src={search} alt={data.name}/></button>
               </div>
-              <div className='humedad'>
-                <p> Humedad: {
-                  data.main ? <p>{data.main.humidity}%</p> : null
-                  }
-                </p>        
+              <div className='c5-subcontainer'>
+                <hr/>
+              {data.list ? 
+                <div>
+                  <p><BsThermometerSun/> Sensacion: {data.list[0].main.feels_like}°C</p>
+                  <p><BsWater /> Humedad: {data.list[0].main.humidity}%</p>
+                  <p><BsFillCloudsFill/> Presion: {data.list[0].main.pressure} Hpa</p>
+                  <p><AiFillEye/> Visibilidad: {data.list[0].visibility}m</p>
+                </div>
+              :null
+              }
               </div>
-                <div className='vientos'>
-              <p>vientos:{
-                data.wind ? <p>{data.wind.speed} KM/h</p> : null
-                  }
-              </p> 
-              </div>
-              </div> 
-          : null
-          }
-
-        </div>{
-          data.main ?
-        <div className='temperatura'>
-              {data.main ? <p>{data.main.temp}°C</p>: null }
-        </div> : null }
+          </div>
+          <div className='c6'>
+          {data.list ? 
+                <div>
+                  <p><BsThermometerSun/> Sensacion: {data.list[0].main.feels_like}°C</p>
+                  <p><BsWater /> Humedad: {data.list[0].main.humidity}%</p>
+                  <p><BsFillCloudsFill/> Presion: {data.list[0].main.pressure} Hpa</p>
+                </div>
+              :null
+              }
+          </div>
       </div>
-      </div>
+    </div>
   );
 }
 
