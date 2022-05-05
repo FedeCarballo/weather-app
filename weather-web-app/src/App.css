@@ -63,7 +63,6 @@
     justify-content: center;
     align-items: center;
     font-size: 4vh;
-    text-shadow: black 3px 3px 3px;
 }
 .c2 .temp_min_max{
     display: flex;
@@ -82,7 +81,6 @@
     justify-content: center;
     align-items: center;
     font-size: 2.6vh;
-    text-shadow: black 5px 4px 3px;
 }
 
 .c4{
@@ -98,7 +96,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    text-shadow: black 2px 2px 3px;
     font-size: 2vh;
     font-weight: 700;
 }
@@ -149,7 +146,7 @@
 hr {border: 0; border-top: 1px solid #999; border-bottom: 1px solid #333; height:0;}
 
 .c5-subcontainer p{
-    text-shadow: black 2px 2px 3px;
+
     font-size: 2vh;
     font-weight: 700;
     text-align:start;
@@ -198,7 +195,6 @@ hr {border: 0; border-top: 1px solid #999; border-bottom: 1px solid #333; height
     }
     .c5-subcontainer p{
         width: 40%;
-        text-shadow: black 2px 2px 3px;
         font-size: 1.4vh !important;
         font-weight: 700;
         text-align:start;
@@ -218,8 +214,6 @@ hr {border: 0; border-top: 1px solid #999; border-bottom: 1px solid #333; height
         justify-content: center;
         align-items: center;
         font-size: 3.4vh;
-        text-shadow: rgb(0, 0, 0) 5px 4px 3px;
-        
     }
     .c3 h1{
         margin: 12px;
@@ -235,7 +229,6 @@ hr {border: 0; border-top: 1px solid #999; border-bottom: 1px solid #333; height
         justify-content: center;
         align-items: center;
         font-size: 2.8vh;
-        text-shadow: black 3px 3px 3px;
     }
     .c2 .temp_min_max{
         display: flex;
