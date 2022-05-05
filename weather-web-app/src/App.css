@@ -46,7 +46,7 @@
 
 .c1{
     grid-area: c1;
-    background-color: #ffffff10;
+    background-color: #ffffff4e;
     backdrop-filter: blur(12px);
     text-align: center;
     border-radius: 15px;
@@ -54,7 +54,7 @@
 }
 .c2{
     grid-area: c2;
-    background-color: #ffffff10;
+    background-color: #ffffff7c;
     backdrop-filter: blur(12px);
     text-align: center;
     border-radius: 15px;
@@ -73,7 +73,7 @@
 .c3{
     grid-area: c3;
     border-radius: 15px;
-    background-color: #ffffff10;
+    background-color: #ffffffc4;
     backdrop-filter: blur(12px);
     text-align: center;
     -webkit-backdrop-filter: blur(12px);
