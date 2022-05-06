@@ -1,15 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import search from './assets/search.png'
 import './App.css'
 import video from './assets/video/wallpaper2.mp4'
 import {BsThermometerSun,BsFillCloudsFill, BsWater} from 'react-icons/bs'
 import {GoLocation} from 'react-icons/go'
-import {AiFillEye} from 'react-icons/ai'
+
+
+
+
 function App() {
   const [data, setdata] = useState({})
   const [location,setlocation] = useState('');
-
+  const [count, setcount] = useState('');
+  const [month,setmonth] = useState('');
+  
   // const url=  `https://api.openweathermap.org/data/2.5/weather?q=${location}&lang=es&appid=9159d68dde8c59e8ba2817c591aae402&units=metric`
 
   const url= `https://api.openweathermap.org/data/2.5/forecast?q=${location}&lang=es&appid=9159d68dde8c59e8ba2817c591aae402&units=metric`
@@ -23,7 +28,23 @@ function App() {
     )  
   setlocation('')
   }
+  const days=['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb' ]
 
+  const months = ['Ene' , 'Feb' , 'Mar' , 'Abr' , 'May' , 'Jun' , 'Jul' , 'Ago' , 'Sep' , 'Oct' , 'Nov' , 'Dic']
+ 
+  useEffect(() => { setInterval(() => {
+    const time = new Date();
+    const month = time.getMonth();
+    const date = time.getDate();
+    const day = time.getDay();
+    const hour = time.getHours();
+    const minute = time.getMinutes();
+    setcount(hour + ':' + minute + ' ')
+    setmonth(days[day]+'/'+date+'/'+months[month])
+  }, 1000);}, [])
+
+  
+console.log(count);
   return (
     <div className="App">
       <div className='Principal-container'>
@@ -36,8 +57,8 @@ function App() {
               <div>
                 <h1>{data.list[0].main.temp}°C</h1>
                 <div className='temp_min_max'>
-                  <p>máx: {data.list[0].main.temp_max}°C</p>
-                  <p>mín: {data.list[0].main.temp_min}°C</p>
+                  <p>máx: </p> <p> {data.list[0].main.temp_max}°C </p> 
+                  <p>mín: </p> <p> {data.list[0].main.temp_min}°C </p> 
                 </div>
               </div> : null }
             </div> 
@@ -63,28 +84,37 @@ function App() {
                   <button type='submit' value={'Buscar'} onClick={searchLocation}><img src={search} alt={data.name}/></button>
               </div>
               <div className='c5-subcontainer'>
+                <div>
+                 {count}
+                </div>
+                <div>
+                  {month}
+                </div>
                 <hr/>
               {data.list ? 
                 <div>
                   <p><BsThermometerSun/> Sensacion: {data.list[0].main.feels_like}°C</p>
                   <p><BsWater /> Humedad: {data.list[0].main.humidity}%</p>
                   <p><BsFillCloudsFill/> Presion: {data.list[0].main.pressure} Hpa</p>
-                  <p><AiFillEye/> Visibilidad: {data.list[0].visibility}m</p>
                 </div>
               :null
               }
               </div>
           </div>
+
+
           <div className='c6'>
           {data.list ? 
                 <div>
-                  <p><BsThermometerSun/> Sensacion: {data.list[0].main.feels_like}°C</p>
-                  <p><BsWater /> Humedad: {data.list[0].main.humidity}%</p>
-                  <p><BsFillCloudsFill/> Presion: {data.list[0].main.pressure} Hpa</p>
+                  <p><BsThermometerSun/> Sensacion: {data.list[0].main.feels_like}°C </p>
+                  <p><BsWater /> Humedad: {data.list[0].main.humidity}% </p>
+                  <p><BsFillCloudsFill/> Presion: {data.list[0].main.pressure} Hpa </p>
                 </div>
               :null
               }
           </div>
+
+
       </div>
     </div>
   );
