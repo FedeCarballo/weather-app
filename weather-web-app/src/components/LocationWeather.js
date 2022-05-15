@@ -34,7 +34,7 @@ const data = 'fino fino señores' // POR FAVOR NO OLVIDAR COMENTAR ESTO CUANDO L
      <div className='container1'> 
        <div className='d1'>
             <h1>
-              Buenos aires
+              Lanus Oeste
             </h1>
          </div>
         <div className='d2'>
